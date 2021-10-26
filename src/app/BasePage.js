@@ -12,7 +12,7 @@ const ReactBootstrapPage = lazy(() =>
   import("./modules/ReactBootstrapExamples/ReactBootstrapPage")
 );
 const ECommercePage = lazy(() =>
-  import("./modules/ECommerce/pages/eCommercePage")
+  import("./modules/ECommerce/page/eCommercePage")
 );
 
 export default function BasePage() {

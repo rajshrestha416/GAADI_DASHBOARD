@@ -2,8 +2,14 @@
 import React from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
-import SVG from "react-inlinesvg";
-import { toAbsoluteUrl, checkIsActive } from "../../../../_helpers";
+import {  checkIsActive } from "../../../../_helpers";
+import { MdDashboard, MdOutlineEvent, MdOutlineModelTraining, MdWorkOutline, MdOutlineInventory } from "react-icons/md";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FiUsers } from "react-icons/fi";
+import { AiOutlineCar, AiOutlineAntDesign } from "react-icons/ai";
+import { BsNut } from "react-icons/bs";
+import { IoTicketOutline } from "react-icons/io5";
+
 
 export function AsideMenuList({ layoutProps }) {
   const location = useLocation();
@@ -23,10 +29,10 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/dashboard">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <MdDashboard/>
             </span>
-            <span className="menu-text">Dashboard</span>
+            <span className="menu-text"> Dashboard</span>
           </NavLink>
         </li>
         {/*end::1 Level*/}
@@ -39,9 +45,9 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="/e-commerce/map">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+            <FaMapMarkerAlt/>
             </span>
-            <span className="menu-text">Map</span>
+            <span className="menu-text"> Map</span>
           </NavLink>
         </li>
         {/*end::1 Level*/}
@@ -49,13 +55,13 @@ export function AsideMenuList({ layoutProps }) {
         {/*begin::2 Level*/}
         <li
           className={`menu-item ${getMenuItemActive(
-            "/e-commerce/customers"
+            "/e-commerce/users"
           )}`}
           aria-haspopup="true"
         >
-          <NavLink className="menu-link" to="/e-commerce/customers">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <NavLink className="menu-link" to="/e-commerce/users">
+          <span className="svg-icon menu-icon">
+          <FiUsers/>
             </span>
             <span className="menu-text">Users</span>
           </NavLink>
@@ -69,8 +75,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/products">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <AiOutlineCar/>
             </span>
             <span className="menu-text">Vehicle</span>
           </NavLink>
@@ -85,8 +91,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/parts">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <BsNut/>
             </span>
             <span className="menu-text">Parts</span>
           </NavLink>
@@ -101,8 +107,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/decoration">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <AiOutlineAntDesign/>
             </span>
             <span className="menu-text">Decoration</span>
           </NavLink>
@@ -118,8 +124,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/ticket">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <IoTicketOutline/>
             </span>
             <span className="menu-text">Ticket</span>
           </NavLink>
@@ -135,8 +141,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/events">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <MdOutlineEvent/>
             </span>
             <span className="menu-text">Events</span>
           </NavLink>
@@ -152,8 +158,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/training">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <MdOutlineModelTraining/>
             </span>
             <span className="menu-text">Training</span>
           </NavLink>
@@ -168,8 +174,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/job">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <MdWorkOutline/>
             </span>
             <span className="menu-text">Job</span>
           </NavLink>
@@ -184,8 +190,8 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="/e-commerce/logistic">
-            <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+          <span className="svg-icon menu-icon">
+          <MdOutlineInventory/>
             </span>
             <span className="menu-text">Logistic</span>
           </NavLink>
