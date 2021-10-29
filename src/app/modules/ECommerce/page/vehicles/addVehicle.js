@@ -13,15 +13,11 @@ import axios from "axios";
 
 function AddVehicle({ closeAddVehicle }) { 
   const [vehicledata, setVehicleData] = useState({
-    "fullname": "",
-    "age": "",
-    "address": "",
-    "email": "",
-    "contact": "",
-    "vehicle": "",
-    "emContact": "",
-    "password": "",
-    "cpassword": ""
+     // Make Model price color 
+    "make": "",
+    "model": "",
+    "price": "",
+    "color": ""
   });
 
   const [vehicles, setVehicles] = useState([]);
@@ -107,37 +103,37 @@ function AddVehicle({ closeAddVehicle }) {
                   </h6>
                   <div className="pl-lg-4">
                     <Row>
-                      <Col lg="6">
+                      <Col lg="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-fullName"
                           >
-                            Full Name
+                            Make
                           </label>
                           <Input
                             className="form-control-alternative"
                             id="input-fullName"
-                            placeholder="fullName"
-                            name="fullname"
+                            placeholder="Make"
+                            name="make"
                             type="text"
                             onChange={changeHandler}
                           />
                         </FormGroup>
                       </Col>
-                      <Col lg="6">
+                      <Col lg="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-email"
                           >
-                            Email address
+                            Model
                           </label>
                           <Input
                             className="form-control-alternative"
                             id="input-email"
-                            name="email"
-                            placeholder="admin@example.com"
+                            name="model"
+                            placeholder="Model"
                             type="email"
                             onChange={changeHandler}
                           />
@@ -145,19 +141,19 @@ function AddVehicle({ closeAddVehicle }) {
                       </Col>
                     </Row>
                     <Row>
-                      <Col lg="6">
+                      <Col lg="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-age"
                           >
-                            Age
+                            Price
                           </label>
                           <Input
                             className="form-control-alternative"
                             id="input-age"
-                            name="age"
-                            placeholder="Age"
+                            name="price"
+                            placeholder="Price"
                             type="number"
                             onChange={changeHandler}
                           />
@@ -165,135 +161,27 @@ function AddVehicle({ closeAddVehicle }) {
                       </Col>
                     </Row>
                   </div>
-                  <hr className="my-4" />
-                  {/* Address */}
-                  <h6 className="heading-small text-muted mb-4">
-                    Contact information
-                  </h6>
                   <div className="pl-lg-4">
                     <Row>
-                      <Col md="12">
+                      <Col lg="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-address"
                           >
-                            Address
+                            Color
                           </label>
                           <Input
                             className="form-control-alternative"
                             id="input-address"
-                            name="address"
-                            placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                            name="color"
+                            placeholder="Color"
                             type="text"
                             onChange={changeHandler}
                           />
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Row>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-conatctNumber"
-                          >
-                            Contact Number
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-contactNumber"
-                            name="contact"
-                            placeholder="contactNumber"
-                            type="number"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-emergencyContact"
-                          >
-                            Emergency Contact
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-emergencyContact"
-                            placeholder="emergencyContact"
-                            type="number"
-                            name="emContact"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                  </div>
-                  <hr className="my-4" />
-                  {/* Description */}
-                  <h6 className="heading-small text-muted mb-4">
-                    Password Information
-                  </h6>
-                  <div className="pl-lg-4">
-                    <Row>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-password"
-                          >
-                            Password
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-password"
-                            placeholder="password"
-                            name="password"
-                            type="password"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-emergencyContact"
-                          >
-                            Confirm Password
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-confirmPassword"
-                            placeholder="confirmPassword"
-                            type="password"
-                            name="cpassword"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                  </div>
-                  <div className="w-100">
-                    <FormGroup>
-                      <label
-                        className="form-control-label"
-                        htmlFor="vehicle"
-                      >
-                        Vehicle:
-                      </label>
-                      <select className="form-control col-sm-9" name="vehicle" onChange={changeHandler}>
-                        <option value="">
-                          Select Vehicle ....
-                        </option>
-                        {vehicles.map(data => {
-                          return <option value={data._id}>
-                            {data.vehicle_number}
-                          </option>;
-                        })}
-                      </select>
-                    </FormGroup>
                   </div>
                   <div className="d-flex justify-content-center">
                     <Button

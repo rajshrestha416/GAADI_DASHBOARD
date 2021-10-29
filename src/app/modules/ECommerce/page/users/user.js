@@ -101,7 +101,8 @@ export function UserPage() {
   };
 
   var _rows = users.map(user => {
-    var name = user.fullname;
+    var firstName = user.firstName;
+    var lastName = user.lastName;
     var age = user.age;
     var address = user.address;
     var contact = user.contact;
@@ -124,13 +125,10 @@ export function UserPage() {
       </div>;
 
     return {
-      'name': name,
-      'age': age,
-      'address': address,
+      'firstName': firstName,
+      'lastName': lastName,
       'contact': contact,
-      "emcontact": emContact,
       "email": email,
-      "date": createdAt,
       "action": action
     };
   });
@@ -138,44 +136,28 @@ export function UserPage() {
   const dataTable = {
     columns: [
       {
-        label: "Name",
-        field: "name",
+        label: "First Name",
+        field: "firstName",
         width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Name",
+          "aria-label": "firstName",
         },
       },
       {
-        label: "Age",
-        field: "age",
+        label: "Last Name",
+        field: "lastName",
         width: 100,
       },
       {
-        label: "Address",
-        field: "address",
+        label: "Contact Number",
+        field: "contact",
         width: 200,
       },
       {
         label: "Email",
         field: "email",
         width: 250,
-      },
-      {
-        label: "Contact",
-        field: "contact",
-        sort: "disabled",
-        width: 200,
-      },
-      {
-        label: "EmContact",
-        field: "emcontact",
-        width: 200,
-      },
-      {
-        label: "Issued date",
-        field: "date",
-        width: 150,
       },
       {
         label: "Action",

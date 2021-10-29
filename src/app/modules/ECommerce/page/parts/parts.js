@@ -101,12 +101,11 @@ export function PartPage() {
   };
 
   var _rows = parts.map(part => {
-    var name = part.fullname;
-    var age = part.age;
-    var address = part.address;
-    var contact = part.contact;
-    var emContact = part.emContact;
-    var email = part.email;
+    //Make Model PartName Price 
+    var make = part.make;
+    var model = part.model;
+    var partName = part.partName;
+    var price = part.price;
     var date = moment(part.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -122,14 +121,12 @@ export function PartPage() {
               setDeleteModalOpen();
             }}></button>
       </div>;
-
+    //Make Model PartName Price 
     return {
-      'name': name,
-      'age': age,
-      'address': address,
-      'contact': contact,
-      "emcontact": emContact,
-      "email": email,
+      'make': make,
+      'model': model,
+      'partName': partName,
+      'price': price,
       "date": createdAt,
       "action": action
     };
@@ -138,8 +135,8 @@ export function PartPage() {
   const dataTable = {
     columns: [
       {
-        label: "Name",
-        field: "name",
+        label: "Make",
+        field: "make",
         width: 200,
         attributes: {
           "aria-controls": "DataTable",
@@ -147,30 +144,19 @@ export function PartPage() {
         },
       },
       {
-        label: "Age",
-        field: "age",
+        label: "Model",
+        field: "model",
         width: 100,
       },
       {
-        label: "Address",
-        field: "address",
+        label: "Part Name",
+        field: "partName",
         width: 200,
       },
       {
-        label: "Email",
-        field: "email",
+        label: "Price",
+        field: "price",
         width: 250,
-      },
-      {
-        label: "Contact",
-        field: "contact",
-        sort: "disabled",
-        width: 200,
-      },
-      {
-        label: "EmContact",
-        field: "emcontact",
-        width: 200,
       },
       {
         label: "Issued date",

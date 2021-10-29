@@ -13,13 +13,11 @@ import axios from "axios";
 
 function AddUser({ closeAddUser }) { 
   const [userdata, setUserData] = useState({
-    "fullname": "",
-    "age": "",
+    "firstName": "",
+    "lastName": "",
     "address": "",
     "email": "",
     "contact": "",
-    "vehicle": "",
-    "emContact": "",
     "password": "",
     "cpassword": ""
   });
@@ -87,9 +85,6 @@ function AddUser({ closeAddUser }) {
     <>
       <div style={{ display: "block" }}>
         <div style={{ overflowY: "initial" }}>
-          {/* <div>
-            <h1 className="text-center">Add User</h1>
-          </div> */}
           <div
             className="pl-lg-4"
             style={{
@@ -97,23 +92,42 @@ function AddUser({ closeAddUser }) {
               overflowY: "auto",
               overflowX: "hidden",
               height: "80vh",
+              width:"80%"
             }}
           >
             <Row>
-              <Col lg="12">
+              <Col xl="12">
                 <Form>
                   <h6 className="heading-small text-muted mb-4">
                     User information
                   </h6>
                   <div className="pl-lg-4">
                     <Row>
-                      <Col lg="6">
+                      <Col xl="6">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-fullName"
                           >
-                            Full Name
+                            First Name
+                          </label>
+                          <Input
+                            className="form-control-alternative"
+                            id="input-fullName"
+                            placeholder="fullName"
+                            name="fullname"
+                            type="text"
+                            onChange={changeHandler}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col xl="6">
+                        <FormGroup>
+                          <label
+                            className="form-control-label"
+                            htmlFor="input-fullName"
+                          >
+                            Last Name
                           </label>
                           <Input
                             className="form-control-alternative"
@@ -131,7 +145,7 @@ function AddUser({ closeAddUser }) {
                             className="form-control-label"
                             htmlFor="input-email"
                           >
-                            Email address
+                            Email Address
                           </label>
                           <Input
                             className="form-control-alternative"
@@ -146,22 +160,6 @@ function AddUser({ closeAddUser }) {
                     </Row>
                     <Row>
                       <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-age"
-                          >
-                            Age
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-age"
-                            name="age"
-                            placeholder="Age"
-                            type="number"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
                       </Col>
                     </Row>
                   </div>
@@ -206,24 +204,6 @@ function AddUser({ closeAddUser }) {
                             name="contact"
                             placeholder="contactNumber"
                             type="number"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-emergencyContact"
-                          >
-                            Emergency Contact
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-emergencyContact"
-                            placeholder="emergencyContact"
-                            type="number"
-                            name="emContact"
                             onChange={changeHandler}
                           />
                         </FormGroup>
@@ -274,26 +254,6 @@ function AddUser({ closeAddUser }) {
                         </FormGroup>
                       </Col>
                     </Row>
-                  </div>
-                  <div className="w-100">
-                    <FormGroup>
-                      <label
-                        className="form-control-label"
-                        htmlFor="vehicle"
-                      >
-                        Vehicle:
-                      </label>
-                      <select className="form-control col-sm-9" name="vehicle" onChange={changeHandler}>
-                        <option value="">
-                          Select Vehicle ....
-                        </option>
-                        {vehicles.map(data => {
-                          return <option value={data._id}>
-                            {data.vehicle_number}
-                          </option>;
-                        })}
-                      </select>
-                    </FormGroup>
                   </div>
                   <div className="d-flex justify-content-center">
                     <Button

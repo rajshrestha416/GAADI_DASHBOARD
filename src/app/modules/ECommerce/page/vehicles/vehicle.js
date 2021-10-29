@@ -101,12 +101,11 @@ export function VehiclePage() {
   };
 
   var _rows = vehicles.map(vehicle => {
-    var name = vehicle.fullname;
-    var age = vehicle.age;
-    var address = vehicle.address;
-    var contact = vehicle.contact;
-    var emContact = vehicle.emContact;
-    var email = vehicle.email;
+    // Make Model price color 
+    var make = vehicle.make;
+    var model = vehicle.model;
+    var price = vehicle.price;
+    var color = vehicle.color;
     var date = moment(vehicle.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -124,12 +123,10 @@ export function VehiclePage() {
       </div>;
 
     return {
-      'name': name,
-      'age': age,
-      'address': address,
-      'contact': contact,
-      "emcontact": emContact,
-      "email": email,
+      'make': make,
+      'model': model,
+      'price': price,
+      'color': color,
       "date": createdAt,
       "action": action
     };
@@ -138,38 +135,33 @@ export function VehiclePage() {
   const dataTable = {
     columns: [
       {
-        label: "Name",
-        field: "name",
+        label: "Make",
+        field: "make",
         width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Name",
+          "aria-label": "Make",
         },
       },
       {
-        label: "Age",
-        field: "age",
+        label: "Model",
+        field: "model",
         width: 100,
       },
       {
-        label: "Address",
-        field: "address",
+        label: "Price",
+        field: "price",
         width: 200,
       },
       {
-        label: "Email",
-        field: "email",
+        label: "Color",
+        field: "color",
         width: 250,
       },
       {
-        label: "Contact",
-        field: "contact",
+        label: "Date",
+        field: "date",
         sort: "disabled",
-        width: 200,
-      },
-      {
-        label: "EmContact",
-        field: "emcontact",
         width: 200,
       },
       {
