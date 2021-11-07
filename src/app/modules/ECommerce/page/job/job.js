@@ -101,12 +101,16 @@ export function JobPage() {
   };
 
   var _rows = jobs.map(job => {
-    var name = job.fullname;
-    var age = job.age;
-    var address = job.address;
-    var contact = job.contact;
-    var emContact = job.emContact;
-    var email = job.email;
+    var title = job.title;
+    var description = job.description;
+    var image = job.image;
+    var salary = job.salary;
+    var time = job.time;
+    var type = job.type;
+    var opening = job.opening;
+    var contacts = job.contacts;
+    var location = job.location;
+    var submission_deadline = job.submission_deadline;
     var date = moment(job.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -123,14 +127,18 @@ export function JobPage() {
             }}></button>
       </div>;
 
+
     return {
-      'name': name,
-      'age': age,
-      'address': address,
-      'contact': contact,
-      "emcontact": emContact,
-      "email": email,
-      "date": createdAt,
+      'title': title,
+      'description': description,
+      'image': image,
+      'salary': salary,
+      "time": time,
+      "type": type,
+      "opening": opening,
+      "contacts": contacts,
+      "location": location,
+      "submission_deadline": submission_deadline,
       "action": action
     };
   });
@@ -138,43 +146,57 @@ export function JobPage() {
   const dataTable = {
     columns: [
       {
-        label: "Name",
-        field: "name",
+        label: "Title",
+        field: "title",
         width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Name",
+          "aria-label": "Title",
         },
       },
       {
-        label: "Age",
-        field: "age",
+        label: "Description",
+        field: "description",
         width: 100,
       },
       {
-        label: "Address",
-        field: "address",
+        label: "Image",
+        field: "image",
         width: 200,
       },
       {
-        label: "Email",
-        field: "email",
+        label: "Salary",
+        field: "salary",
         width: 250,
       },
       {
-        label: "Contact",
-        field: "contact",
-        sort: "disabled",
+        label: "Time",
+        field: "time",
         width: 200,
       },
       {
-        label: "EmContact",
-        field: "emcontact",
+        label: "Type",
+        field: "type",
         width: 200,
       },
       {
-        label: "Issued date",
-        field: "date",
+        label: "Opening",
+        field: "opening",
+        width: 150,
+      },
+      {
+        label: "Contacts",
+        field: "contacts",
+        width: 200,
+      },
+      {
+        label: "Location",
+        field: "location",
+        width: 200,
+      },
+      {
+        label: "Submission Deadline",
+        field: "submission_deadline",
         width: 150,
       },
       {

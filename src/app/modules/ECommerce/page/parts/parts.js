@@ -102,10 +102,14 @@ export function PartPage() {
 
   var _rows = parts.map(part => {
     //Make Model PartName Price 
+    var title = part.title;
+    var image = part.image;
+    var price = part.price;
     var make = part.make;
     var model = part.model;
-    var partName = part.partName;
-    var price = part.price;
+    var contacts = part.contacts;
+    var location = part.location;
+    var specification = part.specification;
     var date = moment(part.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -121,12 +125,23 @@ export function PartPage() {
               setDeleteModalOpen();
             }}></button>
       </div>;
-    //Make Model PartName Price 
+    // //   var title = part.title;
+    // var image = part.image;
+    // var price = part.price;
+    // var make = part.make;
+    // var model = part.model;
+    // var contacts = part.contacts;
+    // var location = part.location;
+    // var specification = part.specification;
     return {
+      'title': title,
+      'image': image,
+      'price': price,
       'make': make,
       'model': model,
-      'partName': partName,
-      'price': price,
+      'contacts': contacts,
+      'location': location,
+      'specification': specification,
       "date": createdAt,
       "action": action
     };
@@ -135,38 +150,58 @@ export function PartPage() {
   const dataTable = {
     columns: [
       {
-        label: "Make",
-        field: "make",
-        width: 200,
+        label: "Title",
+        field: "title",
+        //width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Name",
+          "aria-label": "Title",
         },
+      },
+      {
+        label: "Image",
+        field: "image",
+        //width: 100,
+      },
+      {
+        label: "Price",
+        field: "Price",
+        //width: 200,
+      },
+      {
+        label: "Make",
+        field: "make",
+        //width: 250,
       },
       {
         label: "Model",
         field: "model",
-        width: 100,
+        //width: 100,
       },
       {
-        label: "Part Name",
-        field: "partName",
-        width: 200,
+        label: "Contacts",
+        field: "contacts",
+        //width: 200,
       },
       {
-        label: "Price",
-        field: "price",
-        width: 250,
+        label: "Location",
+        field: "location",
+        //width: 150,
+      },
+      {
+        label: "Specification",
+        field: "specification",
+       // width: 100,
       },
       {
         label: "Issued date",
         field: "date",
-        width: 150,
+        //width: 150,
       },
       {
         label: "Action",
         field: "action",
-        width: 150,
+        //width: 150,
       },
     ],
     rows: _rows

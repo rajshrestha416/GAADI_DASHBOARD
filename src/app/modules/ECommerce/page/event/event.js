@@ -101,12 +101,12 @@ export function EventPage() {
   };
 
   var _rows = events.map(event => {
-    var name = event.fullname;
-    var age = event.age;
-    var address = event.address;
-    var contact = event.contact;
-    var emContact = event.emContact;
-    var email = event.email;
+    var title = event.title;
+    var eventdate = event.eventdate;
+    var description = event.description;
+    var image = event.image;
+    var contacts = event.contacts;
+    var location = event.location;
     var date = moment(event.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -124,12 +124,12 @@ export function EventPage() {
       </div>;
 
     return {
-      'name': name,
-      'age': age,
-      'address': address,
-      'contact': contact,
-      "emcontact": emContact,
-      "email": email,
+      'title ': title,
+      'eventdate': eventdate,
+      'description': description,
+      'image': image,
+      "contacts": contacts,
+      "location": location,
       "date": createdAt,
       "action": action
     };
@@ -138,27 +138,27 @@ export function EventPage() {
   const dataTable = {
     columns: [
       {
-        label: "Name",
-        field: "name",
+        label: "Title",
+        field: "title",
         width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Name",
+          "aria-label": "Title",
         },
       },
       {
-        label: "Age",
-        field: "age",
+        label: "Event Date",
+        field: "eventdate",
         width: 100,
       },
       {
-        label: "Address",
-        field: "address",
+        label: "Description",
+        field: "description",
         width: 200,
       },
       {
-        label: "Email",
-        field: "email",
+        label: "Image",
+        field: "image",
         width: 250,
       },
       {
@@ -168,8 +168,8 @@ export function EventPage() {
         width: 200,
       },
       {
-        label: "EmContact",
-        field: "emcontact",
+        label: "Location",
+        field: "location",
         width: 200,
       },
       {

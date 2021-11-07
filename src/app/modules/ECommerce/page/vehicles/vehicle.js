@@ -102,10 +102,15 @@ export function VehiclePage() {
 
   var _rows = vehicles.map(vehicle => {
     // Make Model price color 
+    var title = vehicle.title;
+    var image = vehicle.image;
     var make = vehicle.make;
     var model = vehicle.model;
     var price = vehicle.price;
     var color = vehicle.color;
+    var features = vehicle.features;
+    var contacts = vehicle.contacts;
+    var location = vehicle.location;
     var date = moment(vehicle.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -126,6 +131,11 @@ export function VehiclePage() {
       'make': make,
       'model': model,
       'price': price,
+      'color': color,
+      'title': title,
+      'features': features,
+      'contacts': contacts,
+      'location': location,
       'color': color,
       "date": createdAt,
       "action": action
@@ -154,8 +164,28 @@ export function VehiclePage() {
         width: 200,
       },
       {
+        label: "Location",
+        field: "location",
+        width: 250,
+      },
+      {
         label: "Color",
         field: "color",
+        width: 250,
+      },
+      {
+        label: "Title",
+        field: "title",
+        width: 250,
+      },
+      {
+        label: "Features",
+        field: "features",
+        width: 250,
+      },
+      {
+        label: "Contacts",
+        field: "contacts",
         width: 250,
       },
       {

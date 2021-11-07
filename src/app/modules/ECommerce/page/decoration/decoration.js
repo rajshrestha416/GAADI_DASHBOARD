@@ -101,12 +101,13 @@ export function DecorationPage() {
   };
 
   var _rows = decorations.map(decoration => {
-    var name = decoration.fullname;
-    var age = decoration.age;
-    var address = decoration.address;
-    var contact = decoration.contact;
-    var emContact = decoration.emContact;
-    var email = decoration.email;
+    var title = decoration.title;
+    var image = decoration.image;
+    var price = decoration.price;
+    var make = decoration.make;
+    var model = decoration.model;
+    var contacts = decoration.contacts;
+    var location = decoration.location;
     var date = moment(decoration.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -124,12 +125,13 @@ export function DecorationPage() {
       </div>;
 
     return {
-      'name': name,
-      'age': age,
-      'address': address,
-      'contact': contact,
-      "emcontact": emContact,
-      "email": email,
+      'title': title,
+      'image': image,
+      'price': price,
+      'make': make,
+      "model": model,
+      "contacts": contacts,
+      "location": location,
       "date": createdAt,
       "action": action
     };
@@ -138,49 +140,54 @@ export function DecorationPage() {
   const dataTable = {
     columns: [
       {
-        label: "Name",
-        field: "name",
-        width: 200,
+        label: "Title",
+        field: "title",
+        //width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Name",
+          "aria-label": "Title",
         },
       },
       {
-        label: "Age",
-        field: "age",
-        width: 100,
+        label: "Image",
+        field: "image",
+        //width: 100,
       },
       {
-        label: "Address",
-        field: "address",
-        width: 200,
+        label: "Price",
+        field: "price",
+        //width: 200,
       },
       {
-        label: "Email",
-        field: "email",
-        width: 250,
+        label: "Make",
+        field: "make",
+        //width: 250,
       },
       {
-        label: "Contact",
-        field: "contact",
+        label: "Model",
+        field: "model",
         sort: "disabled",
-        width: 200,
+        //width: 200,
       },
       {
-        label: "EmContact",
-        field: "emcontact",
-        width: 200,
+        label: "Contacts",
+        field: "contacts",
+        //width: 200,
+      },
+      {
+        label: "Location",
+        field: "location",
+        //width: 200,
       },
       {
         label: "Issued date",
         field: "date",
-        width: 150,
+        //width: 150,
       },
       {
         label: "Action",
         field: "action",
-        width: 150,
+        //width: 150,
       },
     ],
     rows: _rows
