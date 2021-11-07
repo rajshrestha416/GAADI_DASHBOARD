@@ -11,19 +11,19 @@ import {
   Container,
   Row,
 } from "reactstrap";
-// import add vehicle
-import AddVehicle from "./addVehicle";
+// import add workshop
+import AddWorkshop from "./addWorkshop";
 // core components
 import axios from "axios";
-import UpdateVehicle from "./UpdateVehicle.js";
+import UpdateWorkshop from "./UpdateWorkshop.js";
 
-export function VehiclePage() {
+export function WorkshopPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [vehicles, retrieveVehicle] = useState([]);
+  const [workshops, retrieveWorkshop] = useState([]);
   const [deleteModalIsOpen, setDeleteModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
-  const [vehicleId, setSelectVehicle] = useState("");
-  const [vehicledata, setVehicleData] = useState("");
+  const [workshopId, setSelectWorkshop] = useState("");
+  const [workshopdata, setWorkshopData] = useState("");
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true);
@@ -71,8 +71,8 @@ export function VehiclePage() {
   };
 
   const changeHandler = (e) => {
-    setVehicleData({
-      ...vehicledata,
+    setWorkshopData({
+      ...workshopdata,
       [e.target.name]: e.target.value
     });
   };
@@ -80,15 +80,15 @@ export function VehiclePage() {
   useEffect(() => {
     axios.get('http://localhost:3001/api/auth/all')
       .then(response => {
-        retrieveVehicle(response.data.vehicle);
+        retrieveWorkshop(response.data.workshop);
       })
       .catch(err => {
-        toastForFail("Cannot retrieve vehicle");
+        toastForFail("Cannot retrieve workshop");
       });
   }, []);
 
-  const deleteVehicle = () => {
-    axios.delete("http://localhost:3001/api/auth/" + vehicleId)
+  const deleteWorkshop = () => {
+    axios.delete("http://localhost:3001/api/auth/" + workshopId)
       .then(
         (response) => {
           toastForSuccess("Delete Successfull");
@@ -100,44 +100,35 @@ export function VehiclePage() {
       });
   };
 
-  var _rows = vehicles.map(vehicle => {
-    // Make Model price color 
-    var title = vehicle.title;
-    var image = vehicle.image;
-    var make = vehicle.make;
-    var model = vehicle.model;
-    var price = vehicle.price;
-    var color = vehicle.color;
-    var features = vehicle.features;
-    var contacts = vehicle.contacts;
-    var location = vehicle.location;
-    var date = moment(vehicle.createdAt).format('DD/MM/YYYY');
+  var _rows = workshops.map(workshop => {
+    var firstName = workshop.firstName;
+    var lastName = workshop.lastName;
+    var contact = workshop.contact;
+    var  image = workshop.image;
+    var email = workshop.email;
+    var date = moment(workshop.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
         <button className="action btn btn-primary fas fa-solid fa-book"
           onClick={() => {
-            setSelectVehicle(vehicle._id);
+            setSelectWorkshop(workshop._id);
             setUpdateModalOpen();
           }} ></button>
         <button className="action btn btn-danger fa fa-solid fa-trash"
           onClick={
             () => {
-              setSelectVehicle(vehicle._id);
+              setSelectWorkshop(workshop._id);
               setDeleteModalOpen();
             }}></button>
       </div>;
 
     return {
-      'make': make,
-      'model': model,
-      'price': price,
-      'color': color,
-      'title': title,
-      'features': features,
-      'contacts': contacts,
-      'location': location,
-      'color': color,
-      "date": createdAt,
+      'firstName': firstName,
+      'lastName': lastName,
+      'contact': contact,
+      "image": image,
+      "email": email,
+      "createdAt": createdAt,
       "action": action
     };
   });
@@ -145,64 +136,38 @@ export function VehiclePage() {
   const dataTable = {
     columns: [
       {
-        label: "Make",
-        field: "make",
+        label: "First Name",
+        field: "firstName",
         //width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Make",
+          "aria-label": "firstName",
         },
       },
       {
-        label: "Model",
-        field: "model",
-        //width: 100,
+        label: "Last Name",
+        field: "lastName",
+       // width: 100,
       },
       {
-        label: "Price",
-        field: "price",
-       // width: 200,
+        label: "Contact Number",
+        field: "contact",
+        //width: 200,
       },
       {
-        label: "Location",
-        field: "location",
-       // width: 250,
-      },
-      {
-        label: "Color",
-        field: "color",
-       // width: 250,
-      },
-      {
-        label: "Title",
-        field: "title",
-       // width: 250,
-      },
-      {
-        label: "Features",
-        field: "features",
-       // width: 250,
-      },
-      {
-        label: "Contacts",
-        field: "contacts",
+        label: "Image",
+        field: "image",
         //width: 250,
       },
       {
-        label: "Date",
-        field: "date",
-        sort: "disabled",
-       // width: 200,
-      },
-      {
-        label: "Issued date",
-        field: "date",
-        //width: 150,
+        label: "Email",
+        field: "email",
+       // width: 250,
       },
       {
         label: "Action",
         field: "action",
-       // width: 150,
+        //width: 150,
       },
     ],
     rows: _rows
@@ -220,7 +185,7 @@ export function VehiclePage() {
               <CardHeader className="border-0">
                 <div className="row">
                   <h3 className="mb-0 col-lg-6">
-                    <strong>Vehicle Details</strong>
+                    <strong>Workshop Details</strong>
                   </h3>
                   <div className="col-lg-6 d-flex flex-row-reverse">
                     <button
@@ -228,13 +193,13 @@ export function VehiclePage() {
                       type="button"
                       onClick={setModalIsOpenToTrue}
                     >
-                      Add Vehicle
+                      Add Workshop
                     </button>
                   </div>
                 </div>
               </CardHeader>
 
-              {/* Add vehicle Model */}
+              {/* Add workshop Model */}
 
               <div style={{ padding: "20px" }}>
                 <MDBDataTableV5
@@ -249,8 +214,8 @@ export function VehiclePage() {
                 />
               </div>
             </Card>
-            {/* Modal for add vehicle */}
-            <div className="AddVehicle">
+            {/* Modal for add workshop */}
+            <div className="AddWorkshop">
               <Modal
                 show={modalIsOpen}
                 aria-labelledby="contained-modal-title-vcenter"
@@ -265,15 +230,15 @@ export function VehiclePage() {
               >
                 <Modal.Header closeButton >
                   <div className="w-100">
-                    <h1 className="text-center">Add Vehicle</h1>
+                    <h1 className="text-center">Add Workshop</h1>
                   </div>
                 </Modal.Header>
-                 <AddVehicle closeAddVehicle={setModalIsOpenToFalse} />
+                 <AddWorkshop closeAddWorkshop={setModalIsOpenToFalse} />
               </Modal>
             </div>
 
-            {/* Modal for Update vehicle */}
-            <div className="updateVehicle">
+            {/* Modal for Update Workshop */}
+            <div className="updateWorkshop">
               <Modal
                 show={updateModal}
                 aria-labelledby="contained-modal-title-vcenter"
@@ -288,14 +253,14 @@ export function VehiclePage() {
               >
                 <Modal.Header closeButton >
                   <div className="w-100">
-                    <h1 className="text-center">Update Vehicle</h1>
+                    <h1 className="text-center">Update Workshop</h1>
                   </div>
                 </Modal.Header>
-                <UpdateVehicle closeUpdateVehicleModal={setUpdateModalClose} id={vehicleId} />
+                <UpdateWorkshop closeUpdateWorkshopModal={setUpdateModalClose} id={workshopId} />
               </Modal>
             </div>
 
-            {/* Delete vehicle Modal */}
+            {/* Delete Workshop Modal */}
             <div className="deleteVehicle">
               <Modal
                 show={deleteModalIsOpen}
@@ -314,11 +279,11 @@ export function VehiclePage() {
                     <h1 className="text-center">Delete</h1>
                   </div>
                 </Modal.Header>
-                <Modal.Body ><strong>Are you sure you want to delete this vehicle?</strong></Modal.Body>
+                <Modal.Body ><strong>Are you sure you want to delete this workshop?</strong></Modal.Body>
                 <Modal.Footer>
                   <button className="btn btn-danger" onClick={
                     () => {
-                      deleteVehicle();
+                      deleteWorkshop();
                     }} >
                     Delete
                   </button>

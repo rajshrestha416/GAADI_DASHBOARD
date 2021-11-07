@@ -11,8 +11,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-function AddUser({ closeAddUser }) { 
-  const [userdata, setUserData] = useState({
+function AddBooking({ closeAddBooking }) { 
+  const [bookingdata, setBookingData] = useState({
     "firstName": "",
     "lastName": "",
     "address": "",
@@ -33,12 +33,12 @@ function AddUser({ closeAddUser }) {
       });
   }, []);
 
-  const addUser = () => {
-    axios.post("http://localhost:3001/api/auth/register", userdata)
+  const addBooking = () => {
+    axios.post("http://localhost:3001/api/auth/register", bookingdata)
       .then(response => {
         if (response.data.success) {
           addSuccess();
-          closeAddUser();
+          closeAddBooking();
         }
         else {
           addFailed();
@@ -51,7 +51,7 @@ function AddUser({ closeAddUser }) {
   };
 
   const addSuccess = () => {
-    toast.success("User Added Successfully", {
+    toast.success("Booking Added Successfully", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -75,8 +75,8 @@ function AddUser({ closeAddUser }) {
   };
 
   const changeHandler = (e) => {
-    setUserData({
-      ...userdata,
+    setBookingData({
+      ...bookingdata,
       [e.target.name]: e.target.value
     });
   };
@@ -99,7 +99,7 @@ function AddUser({ closeAddUser }) {
               <Col xl="12">
                 <Form>
                   <h6 className="heading-small text-muted mb-4">
-                    User information
+                  Booking information
                   </h6>
                   <div className="pl-lg-4">
                     <Row>
@@ -260,13 +260,13 @@ function AddUser({ closeAddUser }) {
                       className="btn btn-success"
                       // onClick={setModalIsOpenToFalse}
                       style={{ margin: "10px" }}
-                      onClick={addUser}
+                      onClick={addBooking}
                     >
                       Add
                     </Button>
                     <Button
                       className="btn btn-danger"
-                      onClick={closeAddUser}
+                      onClick={closeAddBooking}
                       style={{ margin: "10px" }}
                     >
                       Cancel
@@ -281,4 +281,4 @@ function AddUser({ closeAddUser }) {
     </>
   );
 }
-export default AddUser;
+export default AddBooking;

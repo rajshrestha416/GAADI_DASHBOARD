@@ -11,11 +11,11 @@ import {
 } from "reactstrap";
 import axios from "axios";
 
-function UpdateVehicle({ closeUpdateVehicleModal, id }) {
+function UpdateWorkshop({ closeUpdateWorkshopModal, id }) {
 
     // alert(id)
 
-    const [vehicledata, setVehicleData] = useState({
+    const [workshopdata, setWorkshopData] = useState({
         "fullname": "",
         "age": "",
         "address": "",
@@ -40,7 +40,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
         axios.get("http://localhost:3001/api/auth/" + id)
             .then(response => {
                 if (response.data.success) {
-                    setVehicleData(response.data.vehicle);
+                    setWorkshopData(response.data.workshop);
                 }
             })
             .catch(err => {
@@ -48,12 +48,11 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
             });
     }, [id]);
 
-    const updateVehicle = () => {
-        axios.put("http://localhost:3001/api/auth/" + id, //Vehicledata 
-        )
+    const updateWorkshop = () => {
+        axios.put("http://localhost:3001/api/auth/" + id, workshopdata)
             .then(response => {
                 if (response.data.success) {
-                    closeUpdateVehicleModal();
+                    closeUpdateWorkshopModal();
                     UpdateSuccess();
                 }
                 else {
@@ -66,7 +65,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
     };
 
     const UpdateSuccess = () => {
-        toast.success("Successfully updated vehicle", {
+        toast.success("Successfully updated workshop", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -77,7 +76,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
         });
     };
     const UpdateFailed = () => {
-        toast.error("Failed to update vehicle", {
+        toast.error("Failed to update workshop", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -89,8 +88,8 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
     };
 
     const changeHandler = (e) => {
-        setVehicleData({
-            ...vehicledata,
+        setWorkshopData({
+            ...workshopdata,
             [e.target.name]: e.target.value
         });
     };
@@ -112,7 +111,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                             <Col lg="12">
                                 <Form>
                                     <h6 className="heading-small text-muted mb-4">
-                                    vehicle information
+                                    Workshop information
                                     </h6>
                                     <div className="pl-lg-4">
                                         <Row>
@@ -129,7 +128,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                                                         id="input-fullName"
                                                         placeholder="fullName"
                                                         name="fullname"
-                                                        //value={userdata.fullname}
+                                                        value={workshopdata.fullname}
                                                         type="text"
                                                         onChange={changeHandler}
                                                     />
@@ -149,7 +148,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                                                         name="email"
                                                         placeholder="admin@example.com"
                                                         type="email"
-                                                        //value={Vehicledata.email}
+                                                        value={workshopdata.email}
                                                         onChange={changeHandler}
                                                     />
                                                 </FormGroup>
@@ -168,7 +167,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                                                         className="form-control-alternative"
                                                         id="input-age"
                                                         name="age"
-                                                        //value={Vehicledata.age}
+                                                        value={workshopdata.age}
                                                         placeholder="Age"
                                                         type="number"
                                                         onChange={changeHandler}
@@ -196,7 +195,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                                                         className="form-control-alternative"
                                                         id="input-address"
                                                         name="address"
-                                                        //value={Vehicledata.address}
+                                                        value={workshopdata.address}
                                                         placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
                                                         type="text"
                                                         onChange={changeHandler}
@@ -217,7 +216,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                                                         className="form-control-alternative"
                                                         id="input-contactNumber"
                                                         name="contact"
-                                                        //value={Vehicledata.contact}
+                                                        value={workshopdata.contact}
                                                         placeholder="contactNumber"
                                                         type="number"
                                                         onChange={changeHandler}
@@ -237,7 +236,7 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                                                         id="input-emergencyContact"
                                                         placeholder="emergencyContact"
                                                         type="number"
-                                                        //value={Vehicledata.emContact}
+                                                        value={workshopdata.emContact}
                                                         name="emContact"
                                                         onChange={changeHandler}
                                                     />
@@ -250,13 +249,13 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
                                         <Button
                                             className="btn btn-success"
                                             style={{ margin: "10px" }}
-                                            onClick={updateVehicle}
+                                            onClick={updateWorkshop}
                                         >
                                             Update
                                         </Button>
                                         <Button
                                             className="btn btn-danger"
-                                            onClick={closeUpdateVehicleModal}
+                                            onClick={closeUpdateWorkshopModal}
                                             style={{ margin: "10px" }}
                                         >
                                             Cancel
@@ -271,4 +270,4 @@ function UpdateVehicle({ closeUpdateVehicleModal, id }) {
         </>
     );
 }
-export default UpdateVehicle;
+export default UpdateWorkshop;

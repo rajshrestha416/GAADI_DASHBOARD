@@ -11,11 +11,11 @@ import {
 } from "reactstrap";
 import axios from "axios";
 
-function UpdateUser({ closeUpdateUserModal, id }) {
+function UpdateBooking({ closeUpdateBookingModal, id }) {
 
     // alert(id)
 
-    const [userdata, setUserData] = useState({
+    const [bookingdata, setBookingData] = useState({
         "fullname": "",
         "age": "",
         "address": "",
@@ -40,7 +40,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
         axios.get("http://localhost:3001/api/auth/" + id)
             .then(response => {
                 if (response.data.success) {
-                    setUserData(response.data.user);
+                    setBookingData(response.data.booking);
                 }
             })
             .catch(err => {
@@ -48,11 +48,11 @@ function UpdateUser({ closeUpdateUserModal, id }) {
             });
     }, [id]);
 
-    const updateUser = () => {
-        axios.put("http://localhost:3001/api/auth/" + id, userdata)
+    const updateBooking = () => {
+        axios.put("http://localhost:3001/api/auth/" + id, bookingdata)
             .then(response => {
                 if (response.data.success) {
-                    closeUpdateUserModal();
+                    closeUpdateBookingModal();
                     UpdateSuccess();
                 }
                 else {
@@ -65,7 +65,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
     };
 
     const UpdateSuccess = () => {
-        toast.success("Successfully updated user", {
+        toast.success("Successfully updated booking", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -76,7 +76,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
         });
     };
     const UpdateFailed = () => {
-        toast.error("Failed to update user", {
+        toast.error("Failed to update booking", {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -88,8 +88,8 @@ function UpdateUser({ closeUpdateUserModal, id }) {
     };
 
     const changeHandler = (e) => {
-        setUserData({
-            ...userdata,
+        setBookingData({
+            ...bookingdata,
             [e.target.name]: e.target.value
         });
     };
@@ -111,7 +111,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                             <Col lg="12">
                                 <Form>
                                     <h6 className="heading-small text-muted mb-4">
-                                        User information
+                                    Booking information
                                     </h6>
                                     <div className="pl-lg-4">
                                         <Row>
@@ -128,7 +128,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                                                         id="input-fullName"
                                                         placeholder="fullName"
                                                         name="fullname"
-                                                        value={userdata.fullname}
+                                                        value={bookingdata.fullname}
                                                         type="text"
                                                         onChange={changeHandler}
                                                     />
@@ -148,7 +148,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                                                         name="email"
                                                         placeholder="admin@example.com"
                                                         type="email"
-                                                        value={userdata.email}
+                                                        value={bookingdata.email}
                                                         onChange={changeHandler}
                                                     />
                                                 </FormGroup>
@@ -167,7 +167,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                                                         className="form-control-alternative"
                                                         id="input-age"
                                                         name="age"
-                                                        value={userdata.age}
+                                                        value={bookingdata.age}
                                                         placeholder="Age"
                                                         type="number"
                                                         onChange={changeHandler}
@@ -195,7 +195,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                                                         className="form-control-alternative"
                                                         id="input-address"
                                                         name="address"
-                                                        value={userdata.address}
+                                                        value={bookingdata.address}
                                                         placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
                                                         type="text"
                                                         onChange={changeHandler}
@@ -216,7 +216,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                                                         className="form-control-alternative"
                                                         id="input-contactNumber"
                                                         name="contact"
-                                                        value={userdata.contact}
+                                                        value={bookingdata.contact}
                                                         placeholder="contactNumber"
                                                         type="number"
                                                         onChange={changeHandler}
@@ -236,7 +236,7 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                                                         id="input-emergencyContact"
                                                         placeholder="emergencyContact"
                                                         type="number"
-                                                        value={userdata.emContact}
+                                                        value={bookingdata.emContact}
                                                         name="emContact"
                                                         onChange={changeHandler}
                                                     />
@@ -249,13 +249,13 @@ function UpdateUser({ closeUpdateUserModal, id }) {
                                         <Button
                                             className="btn btn-success"
                                             style={{ margin: "10px" }}
-                                            onClick={updateUser}
+                                            onClick={updateBooking}
                                         >
                                             Update
                                         </Button>
                                         <Button
                                             className="btn btn-danger"
-                                            onClick={closeUpdateUserModal}
+                                            onClick={closeUpdateBookingModal}
                                             style={{ margin: "10px" }}
                                         >
                                             Cancel
@@ -270,4 +270,4 @@ function UpdateUser({ closeUpdateUserModal, id }) {
         </>
     );
 }
-export default UpdateUser;
+export default UpdateBooking;

@@ -10,7 +10,9 @@ import { EventPage } from "./event/event";
 import { TrainingPage } from "./training/training";
 import { JobPage } from "./job/job";
 import { LogisticPage } from "./logistic/logistic";
+import {BookingPage} from "./booking/booking";
 import Maps from "./map/map";
+import { WorkshopPage } from "./workshop/workshop";
 
 export default function eCommercePage() {
   return (
@@ -34,6 +36,8 @@ export default function eCommercePage() {
         <ContentRoute path="/e-commerce/training" component={TrainingPage} />
         <ContentRoute path="/e-commerce/job" component={JobPage} />
         <ContentRoute path="/e-commerce/logistic" component={LogisticPage} />
+        <ContentRoute path="/e-commerce/bookings" component={BookingPage} />
+        <ContentRoute path="/e-commerce/workshop" component={WorkshopPage} />
       </Switch>
     </Suspense>
   );
