@@ -140,7 +140,7 @@ export function EventPage() {
       {
         label: "Title",
         field: "title",
-        width: 200,
+        //width: 200,
         attributes: {
           "aria-controls": "DataTable",
           "aria-label": "Title",
@@ -149,38 +149,38 @@ export function EventPage() {
       {
         label: "Event Date",
         field: "eventdate",
-        width: 100,
+        //width: 100,
       },
       {
         label: "Description",
         field: "description",
-        width: 200,
+       // width: 200,
       },
       {
         label: "Image",
         field: "image",
-        width: 250,
+       // width: 250,
       },
       {
         label: "Contact",
         field: "contact",
         sort: "disabled",
-        width: 200,
+       // width: 200,
       },
       {
         label: "Location",
         field: "location",
-        width: 200,
+        //width: 200,
       },
       {
         label: "Issued date",
         field: "date",
-        width: 150,
+       // width: 150,
       },
       {
         label: "Action",
         field: "action",
-        width: 150,
+        //width: 150,
       },
     ],
     rows: _rows

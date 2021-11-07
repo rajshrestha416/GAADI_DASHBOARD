@@ -103,10 +103,8 @@ export function UserPage() {
   var _rows = users.map(user => {
     var firstName = user.firstName;
     var lastName = user.lastName;
-    var age = user.age;
-    var address = user.address;
     var contact = user.contact;
-    var emContact = user.emContact;
+    var  image = user.image;
     var email = user.email;
     var date = moment(user.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
@@ -128,7 +126,9 @@ export function UserPage() {
       'firstName': firstName,
       'lastName': lastName,
       'contact': contact,
+      "image": image,
       "email": email,
+      "createdAt": createdAt,
       "action": action
     };
   });
@@ -138,7 +138,7 @@ export function UserPage() {
       {
         label: "First Name",
         field: "firstName",
-        width: 200,
+        //width: 200,
         attributes: {
           "aria-controls": "DataTable",
           "aria-label": "firstName",
@@ -147,22 +147,27 @@ export function UserPage() {
       {
         label: "Last Name",
         field: "lastName",
-        width: 100,
+       // width: 100,
       },
       {
         label: "Contact Number",
         field: "contact",
-        width: 200,
+        //width: 200,
+      },
+      {
+        label: "Image",
+        field: "image",
+        //width: 250,
       },
       {
         label: "Email",
         field: "email",
-        width: 250,
+       // width: 250,
       },
       {
         label: "Action",
         field: "action",
-        width: 150,
+        //width: 150,
       },
     ],
     rows: _rows

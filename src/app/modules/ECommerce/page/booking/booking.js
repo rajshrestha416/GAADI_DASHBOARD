@@ -11,19 +11,19 @@ import {
   Container,
   Row,
 } from "reactstrap";
-// import add job
-import AddJob from "./addJob";
+// import add booking
+import AddBooking from "./addBooking";
 // core components
 import axios from "axios";
-import UpdateJob from "./UpdateJob.js";
+import UpdateBooking from "./UpdateBooking.js";
 
-export function JobPage() {
+export function BookingPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [jobs, retrieveJob] = useState([]);
+  const [bookings, retrieveBooking] = useState([]);
   const [deleteModalIsOpen, setDeleteModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
-  const [jobId, setSelectJob] = useState("");
-  const [jobdata, setJobData] = useState("");
+  const [bookingId, setSelectBooking] = useState("");
+  const [bookingdata, setBookingData] = useState("");
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true);
@@ -71,8 +71,8 @@ export function JobPage() {
   };
 
   const changeHandler = (e) => {
-    setJobData({
-      ...jobdata,
+    setBookingData({
+      ...bookingdata,
       [e.target.name]: e.target.value
     });
   };
@@ -80,15 +80,15 @@ export function JobPage() {
   useEffect(() => {
     axios.get('http://localhost:3001/api/auth/all')
       .then(response => {
-        retrieveJob(response.data.job);
+        retrieveBooking(response.data.booking);
       })
       .catch(err => {
-        toastForFail("Cannot retrieve job");
+        toastForFail("Cannot retrieve Booking");
       });
   }, []);
 
-  const deleteJob = () => {
-    axios.delete("http://localhost:3001/api/auth/" + jobId)
+  const deleteBooking = () => {
+    axios.delete("http://localhost:3001/api/auth/" + bookingId)
       .then(
         (response) => {
           toastForSuccess("Delete Successfull");
@@ -100,45 +100,35 @@ export function JobPage() {
       });
   };
 
-  var _rows = jobs.map(job => {
-    var title = job.title;
-    var description = job.description;
-    var image = job.image;
-    var salary = job.salary;
-    var time = job.time;
-    var type = job.type;
-    var opening = job.opening;
-    var contacts = job.contacts;
-    var location = job.location;
-    var submission_deadline = job.submission_deadline;
-    var date = moment(job.createdAt).format('DD/MM/YYYY');
+  var _rows = bookings.map(booking => {
+    var firstName = booking.firstName;
+    var lastName = booking.lastName;
+    var contact = booking.contact;
+    var  image = booking.image;
+    var email = booking.email;
+    var date = moment(booking.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
         <button className="action btn btn-primary fas fa-solid fa-book"
           onClick={() => {
-            setSelectJob(job._id);
+            setSelectBooking(booking._id);
             setUpdateModalOpen();
           }} ></button>
         <button className="action btn btn-danger fa fa-solid fa-trash"
           onClick={
             () => {
-              setSelectJob(job._id);
+              setSelectBooking(booking._id);
               setDeleteModalOpen();
             }}></button>
       </div>;
 
-
     return {
-      'title': title,
-      'description': description,
-      'image': image,
-      'salary': salary,
-      "time": time,
-      "type": type,
-      "opening": opening,
-      "contacts": contacts,
-      "location": location,
-      "submission_deadline": submission_deadline,
+      'firstName': firstName,
+      'lastName': lastName,
+      'contact': contact,
+      "image": image,
+      "email": email,
+      "createdAt": createdAt,
       "action": action
     };
   });
@@ -146,63 +136,38 @@ export function JobPage() {
   const dataTable = {
     columns: [
       {
-        label: "Title",
-        field: "title",
+        label: "First Name",
+        field: "firstName",
         //width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "Title",
+          "aria-label": "firstName",
         },
       },
       {
-        label: "Description",
-        field: "description",
+        label: "Last Name",
+        field: "lastName",
        // width: 100,
+      },
+      {
+        label: "Contact Number",
+        field: "contact",
+        //width: 200,
       },
       {
         label: "Image",
         field: "image",
-       // width: 200,
+        //width: 250,
       },
       {
-        label: "Salary",
-        field: "salary",
+        label: "Email",
+        field: "email",
        // width: 250,
-      },
-      {
-        label: "Time",
-        field: "time",
-       // width: 200,
-      },
-      {
-        label: "Type",
-        field: "type",
-       // width: 200,
-      },
-      {
-        label: "Opening",
-        field: "opening",
-       // width: 150,
-      },
-      {
-        label: "Contacts",
-        field: "contacts",
-       // width: 200,
-      },
-      {
-        label: "Location",
-        field: "location",
-       // width: 200,
-      },
-      {
-        label: "Submission Deadline",
-        field: "submission_deadline",
-       // width: 150,
       },
       {
         label: "Action",
         field: "action",
-       // width: 150,
+        //width: 150,
       },
     ],
     rows: _rows
@@ -220,7 +185,7 @@ export function JobPage() {
               <CardHeader className="border-0">
                 <div className="row">
                   <h3 className="mb-0 col-lg-6">
-                    <strong>Job Details</strong>
+                    <strong>Booking Details</strong>
                   </h3>
                   <div className="col-lg-6 d-flex flex-row-reverse">
                     <button
@@ -228,13 +193,13 @@ export function JobPage() {
                       type="button"
                       onClick={setModalIsOpenToTrue}
                     >
-                      Add Job
+                      Add Booking
                     </button>
                   </div>
                 </div>
               </CardHeader>
 
-              {/* Add Job Model */}
+              {/* Add Booking Model */}
 
               <div style={{ padding: "20px" }}>
                 <MDBDataTableV5
@@ -249,8 +214,8 @@ export function JobPage() {
                 />
               </div>
             </Card>
-            {/* Modal for add Job */}
-            <div className="AddJob">
+            {/* Modal for add Booking */}
+            <div className="AddBooking">
               <Modal
                 show={modalIsOpen}
                 aria-labelledby="contained-modal-title-vcenter"
@@ -265,15 +230,15 @@ export function JobPage() {
               >
                 <Modal.Header closeButton >
                   <div className="w-100">
-                    <h1 className="text-center">Add Job</h1>
+                    <h1 className="text-center">Add Booking</h1>
                   </div>
                 </Modal.Header>
-                 <AddJob closeAddJob={setModalIsOpenToFalse} />
+                 <AddBooking closeAddBooking={setModalIsOpenToFalse} />
               </Modal>
             </div>
 
-            {/* Modal for Update Job */}
-            <div className="updateJob">
+            {/* Modal for Update Booking */}
+            <div className="updateBooking">
               <Modal
                 show={updateModal}
                 aria-labelledby="contained-modal-title-vcenter"
@@ -288,14 +253,14 @@ export function JobPage() {
               >
                 <Modal.Header closeButton >
                   <div className="w-100">
-                    <h1 className="text-center">Update Job</h1>
+                    <h1 className="text-center">Update Booking</h1>
                   </div>
                 </Modal.Header>
-                <UpdateJob closeUpdateJobModal={setUpdateModalClose} id={jobId} />
+                <UpdateBooking closeUpdateBookingModal={setUpdateModalClose} id={bookingId} />
               </Modal>
             </div>
 
-            {/* Delete Job Modal */}
+            {/* Delete Booking Modal */}
             <div className="deleteVehicle">
               <Modal
                 show={deleteModalIsOpen}
@@ -314,11 +279,11 @@ export function JobPage() {
                     <h1 className="text-center">Delete</h1>
                   </div>
                 </Modal.Header>
-                <Modal.Body ><strong>Are you sure you want to delete this job?</strong></Modal.Body>
+                <Modal.Body ><strong>Are you sure you want to delete this Booking?</strong></Modal.Body>
                 <Modal.Footer>
                   <button className="btn btn-danger" onClick={
                     () => {
-                      deleteJob();
+                      deleteBooking();
                     }} >
                     Delete
                   </button>

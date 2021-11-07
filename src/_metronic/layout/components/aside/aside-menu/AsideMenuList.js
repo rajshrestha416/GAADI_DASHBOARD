@@ -5,10 +5,12 @@ import { NavLink } from "react-router-dom";
 import {  checkIsActive } from "../../../../_helpers";
 import { MdDashboard, MdOutlineEvent, MdOutlineModelTraining, MdWorkOutline, MdOutlineInventory } from "react-icons/md";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { BsCalendarDate } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { AiOutlineCar, AiOutlineAntDesign } from "react-icons/ai";
 import { BsNut } from "react-icons/bs";
 import { IoTicketOutline } from "react-icons/io5";
+import { VscTools } from "react-icons/vsc";
 
 
 export function AsideMenuList({ layoutProps }) {
@@ -64,6 +66,21 @@ export function AsideMenuList({ layoutProps }) {
           <FiUsers/>
             </span>
             <span className="menu-text">Users</span>
+          </NavLink>
+        </li>
+
+
+        <li
+          className={`menu-item ${getMenuItemActive(
+            "/e-commerce/bookings"
+          )}`}
+          aria-haspopup="true"
+        >
+          <NavLink className="menu-link" to="/e-commerce/bookings">
+          <span className="svg-icon menu-icon">
+          <BsCalendarDate/>
+            </span>
+            <span className="menu-text">Bookings</span>
           </NavLink>
         </li>
         {/*end::2 Level*/}
@@ -197,6 +214,20 @@ export function AsideMenuList({ layoutProps }) {
           </NavLink>
         </li>
         {/*end::2 Level*/}
+
+        <li
+          className={`menu-item ${getMenuItemActive(
+            "/e-commerce/workshop"
+          )}`}
+          aria-haspopup="true"
+        >
+          <NavLink className="menu-link" to="/e-commerce/workshop">
+          <span className="svg-icon menu-icon">
+          <VscTools/>
+            </span>
+            <span className="menu-text">Workshop</span>
+          </NavLink>
+        </li>
 
         {/* users
           vehicle
