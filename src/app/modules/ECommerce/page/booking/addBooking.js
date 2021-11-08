@@ -13,13 +13,9 @@ import axios from "axios";
 
 function AddBooking({ closeAddBooking }) { 
   const [bookingdata, setBookingData] = useState({
-    "firstName": "",
-    "lastName": "",
-    "address": "",
-    "email": "",
-    "contact": "",
-    "password": "",
-    "cpassword": ""
+    "sender": "",
+    "receiver": "",
+    "vehicle_id": ""
   });
 
   const [vehicles, setVehicles] = useState([]);
@@ -83,33 +79,32 @@ function AddBooking({ closeAddBooking }) {
 
   return (
     <>
-      <div style={{ display: "block" }}>
-        <div style={{ overflowY: "initial" }}>
+      <div style={{ display: "block" ,width:"90%"}}>
+        <div style={{ overflowY: "initial"}}>
           <div
-            className="pl-lg-4"
+            className="ml-3"
             style={{
               marginTop: "20px",
               overflowY: "auto",
               overflowX: "hidden",
-              height: "80vh",
-              width:"80%"
+              width:"98%"
             }}
           >
             <Row>
-              <Col xl="12">
+              <Col col-lg="12">
                 <Form>
                   <h6 className="heading-small text-muted mb-4">
                   Booking information
                   </h6>
                   <div className="pl-lg-4">
                     <Row>
-                      <Col xl="6">
+                      <Col xl="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-fullName"
                           >
-                            First Name
+                            Sender
                           </label>
                           <Input
                             className="form-control-alternative"
@@ -121,13 +116,13 @@ function AddBooking({ closeAddBooking }) {
                           />
                         </FormGroup>
                       </Col>
-                      <Col xl="6">
+                      <Col xl="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-fullName"
                           >
-                            Last Name
+                            Receiver
                           </label>
                           <Input
                             className="form-control-alternative"
@@ -139,13 +134,13 @@ function AddBooking({ closeAddBooking }) {
                           />
                         </FormGroup>
                       </Col>
-                      <Col lg="6">
+                      <Col xl="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
                             htmlFor="input-email"
                           >
-                            Email Address
+                            Vehicle_Id
                           </label>
                           <Input
                             className="form-control-alternative"
@@ -153,102 +148,6 @@ function AddBooking({ closeAddBooking }) {
                             name="email"
                             placeholder="admin@example.com"
                             type="email"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col lg="6">
-                      </Col>
-                    </Row>
-                  </div>
-                  <hr className="my-4" />
-                  {/* Address */}
-                  <h6 className="heading-small text-muted mb-4">
-                    Contact information
-                  </h6>
-                  <div className="pl-lg-4">
-                    <Row>
-                      <Col md="12">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-address"
-                          >
-                            Address
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-address"
-                            name="address"
-                            placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                            type="text"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-conatctNumber"
-                          >
-                            Contact Number
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-contactNumber"
-                            name="contact"
-                            placeholder="contactNumber"
-                            type="number"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                  </div>
-                  <hr className="my-4" />
-                  {/* Description */}
-                  <h6 className="heading-small text-muted mb-4">
-                    Password Information
-                  </h6>
-                  <div className="pl-lg-4">
-                    <Row>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-password"
-                          >
-                            Password
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-password"
-                            placeholder="password"
-                            name="password"
-                            type="password"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-emergencyContact"
-                          >
-                            Confirm Password
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-confirmPassword"
-                            placeholder="confirmPassword"
-                            type="password"
-                            name="cpassword"
                             onChange={changeHandler}
                           />
                         </FormGroup>

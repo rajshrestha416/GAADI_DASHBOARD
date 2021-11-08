@@ -15,9 +15,9 @@ function AddUser({ closeAddUser }) {
   const [userdata, setUserData] = useState({
     "firstName": "",
     "lastName": "",
-    "address": "",
-    "email": "",
     "contact": "",
+    "image": "",
+    "email": "",
     "password": "",
     "cpassword": ""
   });
@@ -83,20 +83,24 @@ function AddUser({ closeAddUser }) {
 
   return (
     <>
-      <div style={{ display: "block" }}>
+      <div style={{ display: "block" ,width:"90%" }}>
         <div style={{ overflowY: "initial" }}>
           <div
-            className="pl-lg-4"
+            className="ml-3"
             style={{
+              // marginTop: "20px",
+              // overflowY: "auto",
+              // overflowX: "hidden",
+              // height: "80vh",
+              // width:"80%"
               marginTop: "20px",
               overflowY: "auto",
               overflowX: "hidden",
-              height: "80vh",
-              width:"80%"
+              width:"98%"
             }}
           >
             <Row>
-              <Col xl="12">
+              <Col col-lg="12">
                 <Form>
                   <h6 className="heading-small text-muted mb-4">
                     User information
@@ -107,15 +111,15 @@ function AddUser({ closeAddUser }) {
                         <FormGroup>
                           <label
                             className="form-control-label"
-                            htmlFor="input-fullName"
+                            htmlFor="input-firstName"
                           >
                             First Name
                           </label>
                           <Input
                             className="form-control-alternative"
-                            id="input-fullName"
-                            placeholder="fullName"
-                            name="fullname"
+                            id="input-firstName"
+                            placeholder="firstName"
+                            name="firstName"
                             type="text"
                             onChange={changeHandler}
                           />
@@ -125,34 +129,34 @@ function AddUser({ closeAddUser }) {
                         <FormGroup>
                           <label
                             className="form-control-label"
-                            htmlFor="input-fullName"
+                            htmlFor="input-lastName"
                           >
                             Last Name
                           </label>
                           <Input
                             className="form-control-alternative"
-                            id="input-fullName"
-                            placeholder="fullName"
-                            name="fullname"
+                            id="input-lastName"
+                            placeholder="lastName"
+                            name="lastName"
                             type="text"
                             onChange={changeHandler}
                           />
                         </FormGroup>
                       </Col>
-                      <Col lg="6">
+                      <Col xl="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
-                            htmlFor="input-email"
+                            htmlFor="input-contact"
                           >
-                            Email Address
+                            Contact Number
                           </label>
                           <Input
                             className="form-control-alternative"
-                            id="input-email"
-                            name="email"
-                            placeholder="admin@example.com"
-                            type="email"
+                            id="input-contact"
+                            name="contact"
+                            placeholder="0000000000"
+                            type="number"
                             onChange={changeHandler}
                           />
                         </FormGroup>
@@ -163,47 +167,45 @@ function AddUser({ closeAddUser }) {
                       </Col>
                     </Row>
                   </div>
-                  <hr className="my-4" />
-                  {/* Address */}
-                  <h6 className="heading-small text-muted mb-4">
-                    Contact information
-                  </h6>
+                  <div className="pl-lg-4">
+                    <Row>
+                      <Col md="6">
+                        <FormGroup>
+                          <label
+                            className="form-control-label"
+                            htmlFor="input-image"
+                          >
+                            Image
+                          </label>
+                          <Input
+                            className="form-control-alternative"
+                            id="input-image"
+                            name="image"
+                            placeholder=".jpg"
+                            type="image"
+                            onChange={changeHandler}
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                  </div>
+
                   <div className="pl-lg-4">
                     <Row>
                       <Col md="12">
                         <FormGroup>
                           <label
                             className="form-control-label"
-                            htmlFor="input-address"
+                            htmlFor="input-email"
                           >
-                            Address
+                            Email
                           </label>
                           <Input
                             className="form-control-alternative"
-                            id="input-address"
-                            name="address"
-                            placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                            type="text"
-                            onChange={changeHandler}
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col lg="6">
-                        <FormGroup>
-                          <label
-                            className="form-control-label"
-                            htmlFor="input-conatctNumber"
-                          >
-                            Contact Number
-                          </label>
-                          <Input
-                            className="form-control-alternative"
-                            id="input-contactNumber"
-                            name="contact"
-                            placeholder="contactNumber"
-                            type="number"
+                            id="input-email"
+                            name="email"
+                            placeholder="example@example.com"
+                            type="email"
                             onChange={changeHandler}
                           />
                         </FormGroup>

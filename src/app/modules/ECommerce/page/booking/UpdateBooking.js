@@ -108,7 +108,7 @@ function UpdateBooking({ closeUpdateBookingModal, id }) {
                         }}
                     >
                         <Row>
-                            <Col lg="12">
+                            <Col col-xl="12">
                                 <Form>
                                     <h6 className="heading-small text-muted mb-4">
                                     Booking information
@@ -119,16 +119,16 @@ function UpdateBooking({ closeUpdateBookingModal, id }) {
                                                 <FormGroup>
                                                     <label
                                                         className="form-control-label"
-                                                        htmlFor="input-fullName"
+                                                        htmlFor="input-sender"
                                                     >
-                                                        Full Name
+                                                        Sender
                                                     </label>
                                                     <Input
                                                         className="form-control-alternative"
-                                                        id="input-fullName"
-                                                        placeholder="fullName"
-                                                        name="fullname"
-                                                        value={bookingdata.fullname}
+                                                        id="input-sender"
+                                                        placeholder="sender"
+                                                        name="sender"
+                                                        value={bookingdata.sender}
                                                         type="text"
                                                         onChange={changeHandler}
                                                     />
@@ -138,17 +138,17 @@ function UpdateBooking({ closeUpdateBookingModal, id }) {
                                                 <FormGroup>
                                                     <label
                                                         className="form-control-label"
-                                                        htmlFor="input-email"
+                                                        htmlFor="input-receiver"
                                                     >
-                                                        Email address
+                                                        Receiver
                                                     </label>
                                                     <Input
                                                         className="form-control-alternative"
-                                                        id="input-email"
-                                                        name="email"
-                                                        placeholder="admin@example.com"
-                                                        type="email"
-                                                        value={bookingdata.email}
+                                                        id="input-receiver"
+                                                        name="receiver"
+                                                        placeholder="receiver"
+                                                        type="receiver"
+                                                        value={bookingdata.receiver}
                                                         onChange={changeHandler}
                                                     />
                                                 </FormGroup>
@@ -159,111 +159,27 @@ function UpdateBooking({ closeUpdateBookingModal, id }) {
                                                 <FormGroup>
                                                     <label
                                                         className="form-control-label"
-                                                        htmlFor="input-age"
+                                                        htmlFor="input-vehicle_id"
                                                     >
-                                                        Age
+                                                        Vechile_Id
                                                     </label>
                                                     <Input
                                                         className="form-control-alternative"
-                                                        id="input-age"
-                                                        name="age"
-                                                        value={bookingdata.age}
-                                                        placeholder="Age"
+                                                        id="input-vehicle_id"
+                                                        name="avehicle_idge"
+                                                        value={bookingdata.vehicle_id}
+                                                        placeholder="vehicle_id"
                                                         type="number"
                                                         onChange={changeHandler}
                                                     />
                                                 </FormGroup>
                                             </Col>
                                         </Row>
+                                    
                                     </div>
-                                    <hr className="my-4" />
-                                    {/* Address */}
-                                    <h6 className="heading-small text-muted mb-4">
-                                        Contact information
-                                    </h6>
-                                    <div className="pl-lg-4">
-                                        <Row>
-                                            <Col md="12">
-                                                <FormGroup>
-                                                    <label
-                                                        className="form-control-label"
-                                                        htmlFor="input-address"
-                                                    >
-                                                        Address
-                                                    </label>
-                                                    <Input
-                                                        className="form-control-alternative"
-                                                        id="input-address"
-                                                        name="address"
-                                                        value={bookingdata.address}
-                                                        placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                                                        type="text"
-                                                        onChange={changeHandler}
-                                                    />
-                                                </FormGroup>
+                                    </Form>
                                             </Col>
                                         </Row>
-                                        <Row>
-                                            <Col lg="6">
-                                                <FormGroup>
-                                                    <label
-                                                        className="form-control-label"
-                                                        htmlFor="input-conatctNumber"
-                                                    >
-                                                        Contact Number
-                                                    </label>
-                                                    <Input
-                                                        className="form-control-alternative"
-                                                        id="input-contactNumber"
-                                                        name="contact"
-                                                        value={bookingdata.contact}
-                                                        placeholder="contactNumber"
-                                                        type="number"
-                                                        onChange={changeHandler}
-                                                    />
-                                                </FormGroup>
-                                            </Col>
-                                            <Col lg="6">
-                                                <FormGroup>
-                                                    <label
-                                                        className="form-control-label"
-                                                        htmlFor="input-emergencyContact"
-                                                    >
-                                                        Emergency Contact
-                                                    </label>
-                                                    <Input
-                                                        className="form-control-alternative"
-                                                        id="input-emergencyContact"
-                                                        placeholder="emergencyContact"
-                                                        type="number"
-                                                        value={bookingdata.emContact}
-                                                        name="emContact"
-                                                        onChange={changeHandler}
-                                                    />
-                                                </FormGroup>
-                                            </Col>
-                                        </Row>
-                                    </div>
-
-                                    <div className="d-flex justify-content-center">
-                                        <Button
-                                            className="btn btn-success"
-                                            style={{ margin: "10px" }}
-                                            onClick={updateBooking}
-                                        >
-                                            Update
-                                        </Button>
-                                        <Button
-                                            className="btn btn-danger"
-                                            onClick={closeUpdateBookingModal}
-                                            style={{ margin: "10px" }}
-                                        >
-                                            Cancel
-                                        </Button>
-                                    </div>
-                                </Form>
-                            </Col>
-                        </Row>
                     </div>
                 </div>
             </div>

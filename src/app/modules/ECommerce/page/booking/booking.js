@@ -101,11 +101,8 @@ export function BookingPage() {
   };
 
   var _rows = bookings.map(booking => {
-    var firstName = booking.firstName;
-    var lastName = booking.lastName;
-    var contact = booking.contact;
-    var  image = booking.image;
-    var email = booking.email;
+    var sender = booking.sender;
+    var receiver = booking.receiver;
     var date = moment(booking.createdAt).format('DD/MM/YYYY');
     var createdAt = date;
     var action = <div className="justify-content-start text-start">
@@ -123,11 +120,8 @@ export function BookingPage() {
       </div>;
 
     return {
-      'firstName': firstName,
-      'lastName': lastName,
-      'contact': contact,
-      "image": image,
-      "email": email,
+      'sender': sender,
+      'receiver': receiver,
       "createdAt": createdAt,
       "action": action
     };
@@ -136,33 +130,18 @@ export function BookingPage() {
   const dataTable = {
     columns: [
       {
-        label: "First Name",
-        field: "firstName",
+        label: "Sender",
+        field: "sender",
         //width: 200,
         attributes: {
           "aria-controls": "DataTable",
-          "aria-label": "firstName",
+          "aria-label": "sender",
         },
       },
       {
-        label: "Last Name",
-        field: "lastName",
+        label: "Receiver",
+        field: "receiver",
        // width: 100,
-      },
-      {
-        label: "Contact Number",
-        field: "contact",
-        //width: 200,
-      },
-      {
-        label: "Image",
-        field: "image",
-        //width: 250,
-      },
-      {
-        label: "Email",
-        field: "email",
-       // width: 250,
       },
       {
         label: "Action",
